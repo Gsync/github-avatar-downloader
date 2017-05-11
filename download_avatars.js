@@ -24,8 +24,13 @@ function getRepoContributors(repoOwner, repoName, cb) {
     var json = JSON.parse(body);
     var avatarArr = [];
 
+      var dir = './avatars';
+          if (!fs.existsSync(dir)){ //if directory doesnt exist create one
+            fs.mkdirSync(dir);
+          }
+
       json.forEach(function(avatar) {
-        downloadImageByURL(avatar.avatar_url, './' + avatar.login + '.jpg');
+        downloadImageByURL(avatar.avatar_url, './avatars/' + avatar.login + '.jpg');
       });
   })
 
