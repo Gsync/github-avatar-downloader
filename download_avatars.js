@@ -1,5 +1,7 @@
 var request = require('request');
 var fs = require('fs');
+var arg1 = process.argv[2];
+var arg2 = process.argv[3];
 
 var options = {
   url: '',
@@ -23,16 +25,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
   request(options, function(err, response, body) {
     var json = JSON.parse(body);
     var avatarArr = [];
-
-      var dir = './avatars';
+    var dir = './avatars';
           if (!fs.existsSync(dir)){ //if directory doesnt exist create one
             fs.mkdirSync(dir);
           }
 
-      json.forEach(function(avatar) {
+    json.forEach(function(avatar) {
         downloadImageByURL(avatar.avatar_url, './avatars/' + avatar.login + '.jpg');
-      });
-  })
+    });
+  });
 
 }
 
@@ -57,7 +58,9 @@ function downloadImageByURL(url, filePath) {
 
 }
 
-getRepoContributors("jquery", "jquery", function() {
+
+//getRepoContributors(args);
+getRepoContributors(arg1, arg2, function() {
   console.log("Errors:", err);
   console.log("Errors:", result);
 });
