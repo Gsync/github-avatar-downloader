@@ -1,8 +1,9 @@
 var request = require('request');
 var fs = require('fs');
-var arg1 = process.argv[2];
+var arg1 = process.argv[2]; //variables to take the arguments from terminal
 var arg2 = process.argv[3];
 
+//object to take the options including user agent header
 var options = {
   url: '',
   method: 'GET',
@@ -11,11 +12,9 @@ var options = {
   }
 }
 
-
-
-
 var GITHUBUSER = "Gsync";
 var GITHUBTOKEN = "5f04057bd82a2c85e456d988fa5f1222fdcd80bf";
+
 console.log("welcome to the github avatar downloader!");
 
 function getRepoContributors(repoOwner, repoName, cb) {
@@ -59,10 +58,7 @@ function downloadImageByURL(url, filePath) {
 }
 
 
-//getRepoContributors(args);
 getRepoContributors(arg1, arg2, function() {
   console.log("Errors:", err);
   console.log("Errors:", result);
 });
-
-///downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
