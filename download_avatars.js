@@ -57,4 +57,4 @@ getRepoContributors("jquery", "jquery", function() {
   console.log("Errors:", result);
 });
 
-//downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+///downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
